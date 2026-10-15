@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>高雄 2D1N 行程 🎵</title>
+  <title>高雄 2D1N 柔和漫遊 🎵</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
@@ -12,107 +12,116 @@
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
   </style>
 </head>
-<body class="bg-slate-100 text-slate-800 pb-12">
+<body class="bg-stone-100 text-stone-700 pb-12">
+
+  <!-- 隱藏的 YouTube 播放器 -->
+  <div id="youtube-player" style="display:none;"></div>
 
   <!-- Header -->
-  <header class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-6 px-4 shadow-md text-center">
+  <header class="bg-gradient-to-r from-rose-200 via-purple-200 to-indigo-200 text-stone-800 py-6 px-4 shadow-sm text-center relative">
     <h1 class="text-2xl font-bold tracking-wide mb-1">高雄 2D1N 行程 🎵</h1>
-    <p class="text-indigo-100 text-xs">10/17 - 10/18 ｜ 理想混蛋演唱會</p>
+    <p class="text-stone-600 text-xs">10/17 - 10/18 ｜ 理想混蛋演唱會</p>
+
+    <!-- 音樂播放按鈕 -->
+    <button onclick="toggleMusic()" id="music-btn" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-stone-700 px-3 py-1.5 rounded-full text-xs font-medium shadow-sm flex items-center gap-1.5 transition">
+      <i id="music-icon" class="fa-solid fa-music text-rose-400"></i>
+      <span id="music-text">理想混蛋 🎵</span>
+    </button>
   </header>
 
-  <main class="max-w-2xl mx-auto px-4 mt-5 space-y-5">
+  <main class="max-w-xl mx-auto px-4 mt-5 space-y-4">
 
     <!-- 天氣區塊 -->
-    <section class="bg-white rounded-xl p-4 shadow-sm border border-slate-200">
+    <section class="bg-white/90 rounded-2xl p-4 shadow-sm border border-stone-200/60">
       <div class="flex items-center justify-between mb-2">
-        <h2 class="text-sm font-bold text-slate-700 flex items-center gap-1.5">
-          <i class="fa-solid fa-cloud-sun text-amber-500"></i> 高雄天氣
+        <h2 class="text-xs font-bold text-stone-600 flex items-center gap-1.5">
+          <i class="fa-solid fa-cloud-sun text-amber-400"></i> 高雄天氣
         </h2>
-        <span id="weather-status" class="text-[11px] bg-indigo-50 text-indigo-600 px-2 py-0.5 rounded-full">連線中...</span>
+        <span id="weather-status" class="text-[10px] bg-stone-100 text-stone-500 px-2 py-0.5 rounded-full">連線中...</span>
       </div>
       <div class="grid grid-cols-2 gap-3 text-center py-1">
-        <div class="bg-slate-50 p-2.5 rounded-lg">
-          <p class="text-xs text-slate-500 font-medium">10/17 (六)</p>
-          <p id="temp-day1" class="text-lg font-bold text-slate-700 mt-0.5">26°C - 31°C</p>
+        <div class="bg-stone-50 p-2.5 rounded-xl">
+          <p class="text-[11px] text-stone-400 font-medium">10/17 (六)</p>
+          <p id="temp-day1" class="text-base font-bold text-stone-700 mt-0.5">26°C - 31°C</p>
         </div>
-        <div class="bg-slate-50 p-2.5 rounded-lg">
-          <p class="text-xs text-slate-500 font-medium">10/18 (日)</p>
-          <p id="temp-day2" class="text-lg font-bold text-slate-700 mt-0.5">25°C - 30°C</p>
+        <div class="bg-stone-50 p-2.5 rounded-xl">
+          <p class="text-[11px] text-stone-400 font-medium">10/18 (日)</p>
+          <p id="temp-day2" class="text-base font-bold text-stone-700 mt-0.5">25°C - 30°C</p>
         </div>
       </div>
     </section>
 
     <!-- Tab 導航 -->
-    <div class="flex gap-2 border-b border-slate-200 pb-2">
-      <button onclick="switchTab('day1')" id="tab-day1" class="tab-btn px-3.5 py-1.5 rounded-lg font-bold text-xs bg-indigo-600 text-white shadow">Day 1 (10/17)</button>
-      <button onclick="switchTab('day2')" id="tab-day2" class="tab-btn px-3.5 py-1.5 rounded-lg font-bold text-xs bg-white text-slate-600 hover:bg-slate-50">Day 2 (10/18)</button>
-      <button onclick="switchTab('packing')" id="tab-packing" class="tab-btn px-3.5 py-1.5 rounded-lg font-bold text-xs bg-white text-slate-600 hover:bg-slate-50">準備與清單</button>
+    <div class="flex gap-2 border-b border-stone-200 pb-2 overflow-x-auto">
+      <button onclick="switchTab('day1')" id="tab-day1" class="tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs bg-rose-300 text-stone-800 shadow-sm">Day 1 (10/17)</button>
+      <button onclick="switchTab('day2')" id="tab-day2" class="tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs bg-white text-stone-500 hover:bg-stone-50">Day 2 (10/18)</button>
+      <button onclick="switchTab('packing')" id="tab-packing" class="tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs bg-white text-stone-500 hover:bg-stone-50">準備與清單</button>
     </div>
 
     <!-- Day 1 行程 -->
     <div id="content-day1" class="tab-content space-y-3">
       
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-indigo-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-rose-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-indigo-600">08:51 - 10:30</span>
-          <h3 class="font-bold text-sm text-slate-800">高鐵南下 (1209次)</h3>
-          <p class="text-xs text-slate-500">臺北 ➔ 左營</p>
+          <span class="text-xs font-semibold text-rose-400">08:51 - 10:30</span>
+          <h3 class="font-bold text-sm text-stone-700">高鐵南下 (1209次)</h3>
+          <p class="text-xs text-stone-400">臺北 ➔ 左營</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=高鐵左營站" target="_blank" class="text-xs bg-slate-100 hover:bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-md">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=高鐵左營站" target="_blank" class="text-xs bg-stone-100 hover:bg-rose-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-indigo-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-rose-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-indigo-600">10:30 - 11:10</span>
-          <h3 class="font-bold text-sm text-slate-800">取機車</h3>
-          <p class="text-xs text-slate-500">高鐵站前租車</p>
+          <span class="text-xs font-semibold text-rose-400">10:30 - 11:10</span>
+          <h3 class="font-bold text-sm text-stone-700">取機車</h3>
+          <p class="text-xs text-stone-400">高鐵站前租車</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=欣興租車左營高鐵" target="_blank" class="text-xs bg-slate-100 hover:bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-md">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=欣興租車左營高鐵" target="_blank" class="text-xs bg-stone-100 hover:bg-rose-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-indigo-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-rose-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-indigo-600">11:10 - 11:45</span>
-          <h3 class="font-bold text-sm text-slate-800">寄放行李</h3>
-          <p class="text-xs text-slate-500">R10 環保文旅</p>
+          <span class="text-xs font-semibold text-rose-400">11:10 - 11:45</span>
+          <h3 class="font-bold text-sm text-stone-700">寄放行李</h3>
+          <p class="text-xs text-stone-400">R10 環保文旅</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=R10環保文旅" target="_blank" class="text-xs bg-slate-100 hover:bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-md">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=R10環保文旅" target="_blank" class="text-xs bg-stone-100 hover:bg-rose-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-amber-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-amber-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-amber-600">11:45 - 13:15 🥣 午餐</span>
-          <h3 class="font-bold text-sm text-slate-800">鴨肉珍 / 丹丹漢堡</h3>
-          <p class="text-xs text-slate-500">鹽埕小吃或丹丹</p>
+          <span class="text-xs font-semibold text-amber-500">11:45 - 13:15 🥣 午餐</span>
+          <h3 class="font-bold text-sm text-stone-700">鴨肉珍 / 丹丹漢堡</h3>
+          <p class="text-xs text-stone-400">鹽埕小吃或丹丹</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=鴨肉珍" target="_blank" class="text-xs bg-slate-100 hover:bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-md">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=鴨肉珍" target="_blank" class="text-xs bg-stone-100 hover:bg-amber-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-indigo-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-rose-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-indigo-600">13:15 - 15:30</span>
-          <h3 class="font-bold text-sm text-slate-800">駁二 ✕ 大港橋 ✕ 高流</h3>
-          <p class="text-xs text-slate-500">港區散步拍照</p>
+          <span class="text-xs font-semibold text-rose-400">13:15 - 15:30</span>
+          <h3 class="font-bold text-sm text-stone-700">駁二 ✕ 大港橋 ✕ 高流</h3>
+          <p class="text-xs text-stone-400">港區散步拍照</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=駁二藝術特區" target="_blank" class="text-xs bg-slate-100 hover:bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-md">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=駁二藝術特區" target="_blank" class="text-xs bg-stone-100 hover:bg-rose-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
-      <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-3.5 rounded-xl shadow-sm flex justify-between items-center">
+      <div class="bg-gradient-to-r from-purple-200 to-rose-200 text-stone-800 p-3.5 rounded-2xl shadow-sm flex justify-between items-center">
         <div>
-          <span class="text-[11px] bg-white/20 px-2 py-0.5 rounded font-medium">16:30 入場 ｜ 18:00 開唱 🎵</span>
-          <h3 class="font-bold text-base mt-1">理想混蛋演唱會</h3>
-          <p class="text-xs text-purple-100">高雄巨蛋</p>
+          <span class="text-[10px] bg-white/60 px-2 py-0.5 rounded-md font-medium text-stone-700">16:30 入場 ｜ 18:00 開唱 🎵</span>
+          <h3 class="font-bold text-base mt-1 text-stone-800">理想混蛋演唱會</h3>
+          <p class="text-xs text-stone-600">高雄巨蛋</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=高雄巨蛋" target="_blank" class="text-xs bg-white text-purple-700 font-bold px-2.5 py-1 rounded-md">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=高雄巨蛋" target="_blank" class="text-xs bg-white text-purple-700 font-bold px-2.5 py-1 rounded-lg shadow-sm">地圖</a>
       </div>
 
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-amber-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-amber-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-amber-600">21:30 - 23:00 🍢 宵夜</span>
-          <h3 class="font-bold text-sm text-slate-800">瑞豐夜市</h3>
-          <p class="text-xs text-slate-500">散場吃宵夜</p>
+          <span class="text-xs font-semibold text-amber-500">21:30 - 23:00 🍢 宵夜</span>
+          <h3 class="font-bold text-sm text-stone-700">瑞豐夜市</h3>
+          <p class="text-xs text-stone-400">散場吃宵夜</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=瑞豐夜市" target="_blank" class="text-xs bg-slate-100 hover:bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-md">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=瑞豐夜市" target="_blank" class="text-xs bg-stone-100 hover:bg-amber-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
     </div>
@@ -120,54 +129,54 @@
     <!-- Day 2 行程 -->
     <div id="content-day2" class="tab-content hidden space-y-3">
       
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-teal-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-teal-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-teal-600">09:00 - 10:00</span>
-          <h3 class="font-bold text-sm text-slate-800">退房與寄行李</h3>
-          <p class="text-xs text-slate-500">R10 環保文旅</p>
+          <span class="text-xs font-semibold text-teal-500">09:00 - 10:00</span>
+          <h3 class="font-bold text-sm text-stone-700">退房與寄行李</h3>
+          <p class="text-xs text-stone-400">R10 環保文旅</p>
         </div>
       </div>
 
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-teal-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-teal-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-teal-600">10:00 - 13:00 🚢 旗津</span>
-          <h3 class="font-bold text-sm text-slate-800">鼓山渡輪 ➔ 旗津老街 ➔ 高雄燈塔</h3>
-          <p class="text-xs text-slate-500">騎車搭渡輪、吃海鮮看海景</p>
+          <span class="text-xs font-semibold text-teal-500">10:00 - 13:00 🚢 旗津</span>
+          <h3 class="font-bold text-sm text-stone-700">鼓山渡輪 ➔ 旗津老街 ➔ 高雄燈塔</h3>
+          <p class="text-xs text-stone-400">騎車搭渡輪、吃海鮮看海景</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=旗津老街" target="_blank" class="text-xs bg-slate-100 hover:bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-md">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=旗津老街" target="_blank" class="text-xs bg-stone-100 hover:bg-teal-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-amber-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-amber-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-amber-600">13:30 - 15:30 🍧 西子灣</span>
-          <h3 class="font-bold text-sm text-slate-800">海之冰 ✕ 西子灣觀景台</h3>
-          <p class="text-xs text-slate-500">吃大碗冰、看海吹風</p>
+          <span class="text-xs font-semibold text-amber-500">13:30 - 15:30 🍧 西子灣</span>
+          <h3 class="font-bold text-sm text-stone-700">海之冰 ✕ 西子灣觀景台</h3>
+          <p class="text-xs text-stone-400">吃大碗冰、看海吹風</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=渡船頭海之冰" target="_blank" class="text-xs bg-slate-100 hover:bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-md">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=渡船頭海之冰" target="_blank" class="text-xs bg-stone-100 hover:bg-amber-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-teal-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-teal-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-teal-600">15:30 - 16:40 ☕ 休息</span>
-          <h3 class="font-bold text-sm text-slate-800">老宅咖啡廳</h3>
-          <p class="text-xs text-slate-500">鹽埕/哈瑪星小店喝飲料</p>
+          <span class="text-xs font-semibold text-teal-500">15:30 - 16:40 ☕ 休息</span>
+          <h3 class="font-bold text-sm text-stone-700">老宅咖啡廳</h3>
+          <p class="text-xs text-stone-400">鹽埕/哈瑪星小店喝飲料</p>
         </div>
       </div>
 
-      <div class="bg-white p-3.5 rounded-xl shadow-sm border-l-4 border-teal-500 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-teal-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-teal-600">16:40 - 18:15</span>
-          <h3 class="font-bold text-sm text-slate-800">取行李與還車</h3>
-          <p class="text-xs text-slate-500">返回左營高鐵站還機車</p>
+          <span class="text-xs font-semibold text-teal-500">16:40 - 18:15</span>
+          <h3 class="font-bold text-sm text-stone-700">取行李與還車</h3>
+          <p class="text-xs text-stone-400">返回左營高鐵站還機車</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=高鐵左營站" target="_blank" class="text-xs bg-slate-100 hover:bg-indigo-50 text-indigo-600 px-2.5 py-1 rounded-md">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=高鐵左營站" target="_blank" class="text-xs bg-stone-100 hover:bg-teal-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
-      <div class="bg-slate-800 text-white p-3.5 rounded-xl shadow-sm flex justify-between items-center">
+      <div class="bg-stone-700 text-stone-100 p-3.5 rounded-2xl shadow-sm flex justify-between items-center">
         <div>
-          <span class="text-xs text-slate-400">19:00 - 20:59</span>
+          <span class="text-xs text-stone-300">19:00 - 20:59</span>
           <h3 class="font-bold text-sm">高鐵北上 (0678次) 🚄</h3>
-          <p class="text-xs text-slate-300">左營 ➔ 臺北</p>
+          <p class="text-xs text-stone-300">左營 ➔ 臺北</p>
         </div>
       </div>
 
@@ -176,96 +185,94 @@
     <!-- 準備與清單 -->
     <div id="content-packing" class="tab-content hidden space-y-4">
       
-      <!-- 行前準備 -->
-      <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-        <h3 class="font-bold text-sm text-slate-800 mb-2.5 flex items-center gap-1.5">
-          <i class="fa-solid fa-clipboard-check text-indigo-500"></i> 行前準備
+      <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-stone-200/60">
+        <h3 class="font-bold text-sm text-stone-700 mb-2.5 flex items-center gap-1.5">
+          <i class="fa-solid fa-clipboard-check text-rose-400"></i> 行前準備
         </h3>
-        <ul class="space-y-2 text-xs text-slate-700">
+        <ul class="space-y-2 text-xs text-stone-600">
           <li class="flex items-center gap-2">
-            <input type="checkbox" id="prep-1" onchange="saveCheck('prep-1')" class="w-4 h-4 rounded text-indigo-600"/>
+            <input type="checkbox" id="prep-1" onchange="saveCheck('prep-1')" class="w-4 h-4 rounded text-rose-400"/>
             <label for="prep-1">預訂高鐵車票（去程1209次 / 回程0678次）</label>
           </li>
           <li class="flex items-center gap-2">
-            <input type="checkbox" id="prep-2" onchange="saveCheck('prep-2')" class="w-4 h-4 rounded text-indigo-600"/>
+            <input type="checkbox" id="prep-2" onchange="saveCheck('prep-2')" class="w-4 h-4 rounded text-rose-400"/>
             <label for="prep-2">預約高鐵站前機車</label>
           </li>
           <li class="flex items-center gap-2">
-            <input type="checkbox" id="prep-3" onchange="saveCheck('prep-3')" class="w-4 h-4 rounded text-indigo-600"/>
+            <input type="checkbox" id="prep-3" onchange="saveCheck('prep-3')" class="w-4 h-4 rounded text-rose-400"/>
             <label for="prep-3">確認演唱會門票資訊</label>
           </li>
           <li class="flex items-center gap-2">
-            <input type="checkbox" id="prep-4" onchange="saveCheck('prep-4')" class="w-4 h-4 rounded text-indigo-600"/>
+            <input type="checkbox" id="prep-4" onchange="saveCheck('prep-4')" class="w-4 h-4 rounded text-rose-400"/>
             <label for="prep-4">確認 R10 環保文旅入住資訊</label>
           </li>
         </ul>
       </div>
 
-      <!-- 攜帶物品 -->
-      <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200">
-        <h3 class="font-bold text-sm text-slate-800 mb-2.5 flex items-center gap-1.5">
-          <i class="fa-solid fa-suitcase text-emerald-500"></i> 攜帶物品
+      <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-stone-200/60">
+        <h3 class="font-bold text-sm text-stone-700 mb-2.5 flex items-center gap-1.5">
+          <i class="fa-solid fa-suitcase text-teal-400"></i> 攜帶物品
         </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-700">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-stone-600">
           <div>
-            <h4 class="font-bold text-slate-500 mb-1.5">證件與票券</h4>
+            <h4 class="font-bold text-stone-400 mb-1.5">證件與票券</h4>
             <ul class="space-y-1.5">
               <li class="flex items-center gap-2">
-                <input type="checkbox" id="pack-1" onchange="saveCheck('pack-1')" class="w-4 h-4 text-emerald-600"/>
+                <input type="checkbox" id="pack-1" onchange="saveCheck('pack-1')" class="w-4 h-4 text-teal-500"/>
                 <label for="pack-1">身分證 / 健保卡</label>
               </li>
               <li class="flex items-center gap-2">
-                <input type="checkbox" id="pack-2" onchange="saveCheck('pack-2')" class="w-4 h-4 text-emerald-600"/>
-                <label for="pack-2" class="font-bold text-red-600">機車駕照 (租車必備)</label>
+                <input type="checkbox" id="pack-2" onchange="saveCheck('pack-2')" class="w-4 h-4 text-teal-500"/>
+                <label for="pack-2" class="font-bold text-rose-500">機車駕照 (租車必備)</label>
               </li>
               <li class="flex items-center gap-2">
-                <input type="checkbox" id="pack-3" onchange="saveCheck('pack-3')" class="w-4 h-4 text-emerald-600"/>
+                <input type="checkbox" id="pack-3" onchange="saveCheck('pack-3')" class="w-4 h-4 text-teal-500"/>
                 <label for="pack-3">演唱會門票</label>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 class="font-bold text-slate-500 mb-1.5">電子產品</h4>
+            <h4 class="font-bold text-stone-400 mb-1.5">電子產品</h4>
             <ul class="space-y-1.5">
               <li class="flex items-center gap-2">
-                <input type="checkbox" id="pack-4" onchange="saveCheck('pack-4')" class="w-4 h-4 text-emerald-600"/>
+                <input type="checkbox" id="pack-4" onchange="saveCheck('pack-4')" class="w-4 h-4 text-teal-500"/>
                 <label for="pack-4">手機 & 行動電源</label>
               </li>
               <li class="flex items-center gap-2">
-                <input type="checkbox" id="pack-5" onchange="saveCheck('pack-5')" class="w-4 h-4 text-emerald-600"/>
+                <input type="checkbox" id="pack-5" onchange="saveCheck('pack-5')" class="w-4 h-4 text-teal-500"/>
                 <label for="pack-5">充電器與線材</label>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 class="font-bold text-slate-500 mb-1.5">衣物與騎車用品</h4>
+            <h4 class="font-bold text-stone-400 mb-1.5">衣物與用品</h4>
             <ul class="space-y-1.5">
               <li class="flex items-center gap-2">
-                <input type="checkbox" id="pack-6" onchange="saveCheck('pack-6')" class="w-4 h-4 text-emerald-600"/>
+                <input type="checkbox" id="pack-6" onchange="saveCheck('pack-6')" class="w-4 h-4 text-teal-500"/>
                 <label for="pack-6">換洗衣物 1 套 & 舒適鞋子</label>
               </li>
               <li class="flex items-center gap-2">
-                <input type="checkbox" id="pack-7" onchange="saveCheck('pack-7')" class="w-4 h-4 text-emerald-600"/>
+                <input type="checkbox" id="pack-7" onchange="saveCheck('pack-7')" class="w-4 h-4 text-teal-500"/>
                 <label for="pack-7">防風薄外套</label>
               </li>
               <li class="flex items-center gap-2">
-                <input type="checkbox" id="pack-8" onchange="saveCheck('pack-8')" class="w-4 h-4 text-emerald-600"/>
+                <input type="checkbox" id="pack-8" onchange="saveCheck('pack-8')" class="w-4 h-4 text-teal-500"/>
                 <label for="pack-8">安全帽襯墊 / 口罩 / 雨衣</label>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 class="font-bold text-slate-500 mb-1.5">個人用品</h4>
+            <h4 class="font-bold text-stone-400 mb-1.5">個人用品</h4>
             <ul class="space-y-1.5">
               <li class="flex items-center gap-2">
-                <input type="checkbox" id="pack-9" onchange="saveCheck('pack-9')" class="w-4 h-4 text-emerald-600"/>
-                <label for="pack-9">個人盥洗用品 (飯店不提供一次性備品)</label>
+                <input type="checkbox" id="pack-9" onchange="saveCheck('pack-9')" class="w-4 h-4 text-teal-500"/>
+                <label for="pack-9">個人盥洗用品 (飯店無一次性備品)</label>
               </li>
               <li class="flex items-center gap-2">
-                <input type="checkbox" id="pack-10" onchange="saveCheck('pack-10')" class="w-4 h-4 text-emerald-600"/>
+                <input type="checkbox" id="pack-10" onchange="saveCheck('pack-10')" class="w-4 h-4 text-teal-500"/>
                 <label for="pack-10">水壺 / 墨鏡 / 防曬</label>
               </li>
             </ul>
@@ -277,18 +284,55 @@
 
   </main>
 
+  <!-- YouTube API 串接 -->
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
+    let ytPlayer;
+    let isPlaying = false;
+
+    function onYouTubeIframeAPIReady() {
+      ytPlayer = new YT.Player('youtube-player', {
+        height: '0',
+        width: '0',
+        videoId: 'Fh1yD5pVhMc', // 理想混蛋《不是因為天氣晴朗才愛你》
+        playerVars: {
+          'autoplay': 0,
+          'controls': 0,
+          'loop': 1,
+          'playlist': 'Fh1yD5pVhMc'
+        }
+      });
+    }
+
+    function toggleMusic() {
+      const icon = document.getElementById('music-icon');
+      const text = document.getElementById('music-text');
+
+      if (!ytPlayer || typeof ytPlayer.getPlayerState !== 'function') return;
+
+      const state = ytPlayer.getPlayerState();
+      if (state === YT.PlayerState.PLAYING) {
+        ytPlayer.pauseVideo();
+        text.innerText = '理想混蛋 🎵';
+        icon.className = 'fa-solid fa-music text-rose-400';
+      } else {
+        ytPlayer.playVideo();
+        text.innerText = '播放中 🎶';
+        icon.className = 'fa-solid fa-compact-disc text-rose-500 animate-spin';
+      }
+    }
+
     function switchTab(tabName) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-indigo-600', 'text-white', 'shadow');
-        btn.classList.add('bg-white', 'text-slate-600');
+        btn.classList.remove('bg-rose-300', 'text-stone-800', 'shadow-sm');
+        btn.classList.add('bg-white', 'text-stone-500');
       });
 
       document.getElementById('content-' + tabName).classList.remove('hidden');
       const activeBtn = document.getElementById('tab-' + tabName);
-      activeBtn.classList.remove('bg-white', 'text-slate-600');
-      activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow');
+      activeBtn.classList.remove('bg-white', 'text-stone-500');
+      activeBtn.classList.add('bg-rose-300', 'text-stone-800', 'shadow-sm');
     }
 
     function saveCheck(id) {
@@ -318,8 +362,8 @@
 
           document.getElementById('temp-day1').innerText = `${minTemp1}°C - ${maxTemp1}°C`;
           document.getElementById('temp-day2').innerText = `${minTemp2}°C - ${maxTemp2}°C`;
-          document.getElementById('weather-status').innerText = '即時更新';
-          document.getElementById('weather-status').className = 'text-[11px] bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full';
+          document.getElementById('weather-status').innerText = '即時連線';
+          document.getElementById('weather-status').className = 'text-[10px] bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full';
         }
       } catch (err) {
         document.getElementById('weather-status').innerText = '一般預報';
