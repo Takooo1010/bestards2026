@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>高雄 2D1N 柔和漫遊 🎵</title>
+  <title>高雄 2D1N 舒活漫遊 🎵</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
@@ -14,7 +14,7 @@
 </head>
 <body class="bg-stone-100 text-stone-700 pb-12">
 
-  <!-- 隱藏的 YouTube 播放器 -->
+  <!-- 隱藏的 YouTube 播放器 (理想混蛋 - 不是因為天氣晴朗才愛你) -->
   <div id="youtube-player" style="display:none;"></div>
 
   <!-- Header -->
@@ -52,10 +52,11 @@
     </section>
 
     <!-- Tab 導航 -->
-    <div class="flex gap-2 border-b border-stone-200 pb-2 overflow-x-auto">
-      <button onclick="switchTab('day1')" id="tab-day1" class="tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs bg-rose-300 text-stone-800 shadow-sm">Day 1 (10/17)</button>
-      <button onclick="switchTab('day2')" id="tab-day2" class="tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs bg-white text-stone-500 hover:bg-stone-50">Day 2 (10/18)</button>
-      <button onclick="switchTab('packing')" id="tab-packing" class="tab-btn px-3.5 py-1.5 rounded-xl font-bold text-xs bg-white text-stone-500 hover:bg-stone-50">準備與清單</button>
+    <div class="flex gap-1.5 border-b border-stone-200 pb-2 overflow-x-auto">
+      <button onclick="switchTab('day1')" id="tab-day1" class="tab-btn px-3 py-1.5 rounded-xl font-bold text-xs bg-rose-300 text-stone-800 shadow-sm whitespace-nowrap">Day 1 (10/17)</button>
+      <button onclick="switchTab('day2')" id="tab-day2" class="tab-btn px-3 py-1.5 rounded-xl font-bold text-xs bg-white text-stone-500 hover:bg-stone-50 whitespace-nowrap">Day 2 (10/18)</button>
+      <button onclick="switchTab('packing')" id="tab-packing" class="tab-btn px-3 py-1.5 rounded-xl font-bold text-xs bg-white text-stone-500 hover:bg-stone-50 whitespace-nowrap">準備與清單</button>
+      <button onclick="switchTab('food')" id="tab-food" class="tab-btn px-3 py-1.5 rounded-xl font-bold text-xs bg-white text-amber-600 hover:bg-amber-50 whitespace-nowrap"><i class="fa-solid fa-utensils mr-1"></i>美食景點備選</button>
     </div>
 
     <!-- Day 1 行程 -->
@@ -83,45 +84,45 @@
         <div>
           <span class="text-xs font-semibold text-rose-400">11:10 - 11:45</span>
           <h3 class="font-bold text-sm text-stone-700">寄放行李</h3>
-          <p class="text-xs text-stone-400">R10 環保文旅</p>
+          <p class="text-xs text-stone-400">R10 環保文旅（美麗島站旁）</p>
         </div>
         <a href="https://www.google.com/maps/search/?api=1&query=R10環保文旅" target="_blank" class="text-xs bg-stone-100 hover:bg-rose-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
       <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-amber-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-amber-500">11:45 - 13:15 🥣 午餐</span>
-          <h3 class="font-bold text-sm text-stone-700">鴨肉珍 / 丹丹漢堡</h3>
-          <p class="text-xs text-stone-400">鹽埕小吃或丹丹</p>
+          <span class="text-xs font-semibold text-amber-500">11:45 - 13:00 🥣 午餐</span>
+          <h3 class="font-bold text-sm text-stone-700">鴨肉珍 / 港園牛肉麵</h3>
+          <p class="text-xs text-stone-400">鹽埕古早味美食、熱湯舒緩身體</p>
         </div>
         <a href="https://www.google.com/maps/search/?api=1&query=鴨肉珍" target="_blank" class="text-xs bg-stone-100 hover:bg-amber-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
-      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-rose-300 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-sky-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-rose-400">13:15 - 15:30</span>
-          <h3 class="font-bold text-sm text-stone-700">駁二 ✕ 大港橋 ✕ 高流</h3>
-          <p class="text-xs text-stone-400">港區散步拍照</p>
+          <span class="text-xs font-semibold text-sky-500">13:00 - 15:30 🌊 港灣海風放空</span>
+          <h3 class="font-bold text-sm text-stone-700">高雄流行音樂中心 ✕ 大港橋水岸</h3>
+          <p class="text-xs text-stone-400">平坦寬敞港灣，機車停旁邊吹海風看海景</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=駁二藝術特區" target="_blank" class="text-xs bg-stone-100 hover:bg-rose-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=高雄流行音樂中心" target="_blank" class="text-xs bg-stone-100 hover:bg-sky-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
       <div class="bg-gradient-to-r from-purple-200 to-rose-200 text-stone-800 p-3.5 rounded-2xl shadow-sm flex justify-between items-center">
         <div>
           <span class="text-[10px] bg-white/60 px-2 py-0.5 rounded-md font-medium text-stone-700">16:30 入場 ｜ 18:00 開唱 🎵</span>
           <h3 class="font-bold text-base mt-1 text-stone-800">理想混蛋演唱會</h3>
-          <p class="text-xs text-stone-600">高雄巨蛋</p>
+          <p class="text-xs text-stone-600">高雄巨蛋（提早進場座席休息）</p>
         </div>
         <a href="https://www.google.com/maps/search/?api=1&query=高雄巨蛋" target="_blank" class="text-xs bg-white text-purple-700 font-bold px-2.5 py-1 rounded-lg shadow-sm">地圖</a>
       </div>
 
       <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-amber-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-amber-500">21:30 - 23:00 🍢 宵夜</span>
-          <h3 class="font-bold text-sm text-stone-700">瑞豐夜市</h3>
-          <p class="text-xs text-stone-400">散場吃宵夜</p>
+          <span class="text-xs font-semibold text-amber-500">21:30 - 22:30 🍲 暖心宵夜</span>
+          <h3 class="font-bold text-sm text-stone-700">千韻海鮮粥 / 一碗質樸湯泡飯</h3>
+          <p class="text-xs text-stone-400">巨蛋周邊現煮熱粥熱湯，免排隊擠夜市</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=瑞豐夜市" target="_blank" class="text-xs bg-stone-100 hover:bg-amber-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=千韻海鮮粥" target="_blank" class="text-xs bg-stone-100 hover:bg-amber-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
     </div>
@@ -131,36 +132,37 @@
       
       <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-teal-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-teal-500">09:00 - 10:00</span>
+          <span class="text-xs font-semibold text-teal-500">09:30 - 10:30 😴 睡飽退房</span>
           <h3 class="font-bold text-sm text-stone-700">退房與寄行李</h3>
-          <p class="text-xs text-stone-400">R10 環保文旅</p>
+          <p class="text-xs text-stone-400">R10 環保文旅（讓身體充足休息）</p>
         </div>
       </div>
 
-      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-teal-300 flex justify-between items-center">
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-sky-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-teal-500">10:00 - 13:00 🚢 旗津</span>
-          <h3 class="font-bold text-sm text-stone-700">鼓山渡輪 ➔ 旗津老街 ➔ 高雄燈塔</h3>
-          <p class="text-xs text-stone-400">騎車搭渡輪、吃海鮮看海景</p>
+          <span class="text-xs font-semibold text-sky-500">10:30 - 13:00 🚢 旗津海景漫遊</span>
+          <h3 class="font-bold text-sm text-stone-700">鼓山渡輪 ➔ 旗津海岸公園 ✕ 風車公園</h3>
+          <p class="text-xs text-stone-400">機車直接上渡輪，沿海岸線騎車看海</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=旗津老街" target="_blank" class="text-xs bg-stone-100 hover:bg-teal-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=旗津海岸公園" target="_blank" class="text-xs bg-stone-100 hover:bg-sky-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
+      </div>
+
+      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-sky-300 flex justify-between items-center">
+        <div>
+          <span class="text-xs font-semibold text-sky-500">13:30 - 15:30 🌊 絕美海景第一排</span>
+          <h3 class="font-bold text-sm text-stone-700">西子灣觀景平台 / 柴山沿海觀景點</h3>
+          <p class="text-xs text-stone-400">機車直達海邊，坐在堤防看遼闊大海與海浪</p>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=西子灣觀景平台" target="_blank" class="text-xs bg-stone-100 hover:bg-sky-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
       </div>
 
       <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-amber-300 flex justify-between items-center">
         <div>
-          <span class="text-xs font-semibold text-amber-500">13:30 - 15:30 🍧 西子灣</span>
-          <h3 class="font-bold text-sm text-stone-700">海之冰 ✕ 西子灣觀景台</h3>
-          <p class="text-xs text-stone-400">吃大碗冰、看海吹風</p>
+          <span class="text-xs font-semibold text-amber-500">15:30 - 16:40 🍧 點心休息</span>
+          <h3 class="font-bold text-sm text-stone-700">渡船頭海之冰 / 鹽埕老宅咖啡</h3>
+          <p class="text-xs text-stone-400">吃古早味大碗冰或喝飲料休息</p>
         </div>
         <a href="https://www.google.com/maps/search/?api=1&query=渡船頭海之冰" target="_blank" class="text-xs bg-stone-100 hover:bg-amber-50 text-stone-600 px-2.5 py-1 rounded-lg">地圖</a>
-      </div>
-
-      <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-teal-300 flex justify-between items-center">
-        <div>
-          <span class="text-xs font-semibold text-teal-500">15:30 - 16:40 ☕ 休息</span>
-          <h3 class="font-bold text-sm text-stone-700">老宅咖啡廳</h3>
-          <p class="text-xs text-stone-400">鹽埕/哈瑪星小店喝飲料</p>
-        </div>
       </div>
 
       <div class="bg-white/90 p-3.5 rounded-2xl shadow-sm border-l-4 border-teal-300 flex justify-between items-center">
@@ -204,7 +206,7 @@
           </li>
           <li class="flex items-center gap-2">
             <input type="checkbox" id="prep-4" onchange="saveCheck('prep-4')" class="w-4 h-4 rounded text-rose-400"/>
-            <label for="prep-4">確認 R10 環保文旅入住資訊</label>
+            <label for="prep-4">準備簡單感冒成藥與水壺補充水分</label>
           </li>
         </ul>
       </div>
@@ -255,11 +257,11 @@
               </li>
               <li class="flex items-center gap-2">
                 <input type="checkbox" id="pack-7" onchange="saveCheck('pack-7')" class="w-4 h-4 text-teal-500"/>
-                <label for="pack-7">防風薄外套</label>
+                <label for="pack-7">保暖防風薄外套 (騎車/海風備用)</label>
               </li>
               <li class="flex items-center gap-2">
                 <input type="checkbox" id="pack-8" onchange="saveCheck('pack-8')" class="w-4 h-4 text-teal-500"/>
-                <label for="pack-8">安全帽襯墊 / 口罩 / 雨衣</label>
+                <label for="pack-8">口罩 / 保溫水壺</label>
               </li>
             </ul>
           </div>
@@ -273,9 +275,86 @@
               </li>
               <li class="flex items-center gap-2">
                 <input type="checkbox" id="pack-10" onchange="saveCheck('pack-10')" class="w-4 h-4 text-teal-500"/>
-                <label for="pack-10">水壺 / 墨鏡 / 防曬</label>
+                <label for="pack-10">感冒備用藥 / 維他命C</label>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 🍲 美食與自然景點備選清單 -->
+    <div id="content-food" class="tab-content hidden space-y-4">
+      
+      <!-- 免徒步自然景點 -->
+      <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-stone-200/60">
+        <h3 class="font-bold text-sm text-stone-700 mb-2.5 flex items-center gap-1.5">
+          <i class="fa-solid fa-water text-sky-500"></i> 免徒步自然海景點 (機車直達/不累)
+        </h3>
+        <div class="space-y-2 text-xs text-stone-600">
+          <div class="p-2 bg-sky-50/60 rounded-xl flex justify-between items-center">
+            <div>
+              <p class="font-bold text-stone-800">西子灣觀景平台（鼓山區）</p>
+              <p class="text-[11px] text-stone-500">機車停旁邊，坐在堤防看無敵蔚藍大海</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=西子灣觀景平台" target="_blank" class="text-xs bg-white text-sky-700 font-bold px-2 py-1 rounded-md shadow-sm">地圖</a>
+          </div>
+
+          <div class="p-2 bg-sky-50/60 rounded-xl flex justify-between items-center">
+            <div>
+              <p class="font-bold text-stone-800">旗津風車公園 ✕ 海岸公園（旗津區）</p>
+              <p class="text-[11px] text-stone-500">騎車沿海岸公路吹海風，車停即看海邊</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=旗津風車公園" target="_blank" class="text-xs bg-white text-sky-700 font-bold px-2 py-1 rounded-md shadow-sm">地圖</a>
+          </div>
+
+          <div class="p-2 bg-sky-50/60 rounded-xl flex justify-between items-center">
+            <div>
+              <p class="font-bold text-stone-800">高雄流行音樂中心 鯨魚堤岸（鹽埕區）</p>
+              <p class="text-[11px] text-stone-500">開闊平坦港灣，坐著欣賞水岸藍天景色</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=高雄流行音樂中心" target="_blank" class="text-xs bg-white text-sky-700 font-bold px-2 py-1 rounded-md shadow-sm">地圖</a>
+          </div>
+
+          <div class="p-2 bg-sky-50/60 rounded-xl flex justify-between items-center">
+            <div>
+              <p class="font-bold text-stone-800">蓮池潭風景區 (龍虎塔旁)（左營區）</p>
+              <p class="text-[11px] text-stone-500">離高鐵站5分鐘，湖光山色，騎車環湖停靠</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=蓮池潭風景區" target="_blank" class="text-xs bg-white text-sky-700 font-bold px-2 py-1 rounded-md shadow-sm">地圖</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 溫暖正餐/熱湯 -->
+      <div class="bg-white/90 p-4 rounded-2xl shadow-sm border border-stone-200/60">
+        <h3 class="font-bold text-sm text-stone-700 mb-2.5 flex items-center gap-1.5">
+          <i class="fa-solid fa-bowl-food text-amber-500"></i> 溫暖熱湯與正餐 (滋補舒緩)
+        </h3>
+        <div class="space-y-2 text-xs text-stone-600">
+          <div class="p-2 bg-amber-50/60 rounded-xl flex justify-between items-center">
+            <div>
+              <p class="font-bold text-stone-800">鴨肉珍 / 鴨肉本（鹽埕區）</p>
+              <p class="text-[11px] text-stone-500">香濃鴨肉飯 + 暖胃下水湯 / 鴨肉湯</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=鴨肉珍" target="_blank" class="text-xs bg-white text-amber-700 font-bold px-2 py-1 rounded-md shadow-sm">地圖</a>
+          </div>
+
+          <div class="p-2 bg-amber-50/60 rounded-xl flex justify-between items-center">
+            <div>
+              <p class="font-bold text-stone-800">港園牛肉麵（鹽埕區）</p>
+              <p class="text-[11px] text-stone-500">濃郁溫熱牛肉湯麵，軟嫩美味</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=港園牛肉麵" target="_blank" class="text-xs bg-white text-amber-700 font-bold px-2 py-1 rounded-md shadow-sm">地圖</a>
+          </div>
+
+          <div class="p-2 bg-amber-50/60 rounded-xl flex justify-between items-center">
+            <div>
+              <p class="font-bold text-stone-800">千韻海鮮粥（巨蛋/鼓山）</p>
+              <p class="text-[11px] text-stone-500">現點現煮鮮甜海鮮粥，暖心宵夜首選</p>
+            </div>
+            <a href="https://www.google.com/maps/search/?api=1&query=千韻海鮮粥" target="_blank" class="text-xs bg-white text-amber-700 font-bold px-2 py-1 rounded-md shadow-sm">地圖</a>
           </div>
         </div>
       </div>
@@ -288,7 +367,6 @@
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     let ytPlayer;
-    let isPlaying = false;
 
     function onYouTubeIframeAPIReady() {
       ytPlayer = new YT.Player('youtube-player', {
@@ -325,14 +403,19 @@
     function switchTab(tabName) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-rose-300', 'text-stone-800', 'shadow-sm');
+        btn.classList.remove('bg-rose-300', 'text-stone-800', 'shadow-sm', 'bg-amber-300');
         btn.classList.add('bg-white', 'text-stone-500');
       });
 
       document.getElementById('content-' + tabName).classList.remove('hidden');
       const activeBtn = document.getElementById('tab-' + tabName);
       activeBtn.classList.remove('bg-white', 'text-stone-500');
-      activeBtn.classList.add('bg-rose-300', 'text-stone-800', 'shadow-sm');
+      
+      if (tabName === 'food') {
+        activeBtn.classList.add('bg-amber-300', 'text-stone-800', 'shadow-sm');
+      } else {
+        activeBtn.classList.add('bg-rose-300', 'text-stone-800', 'shadow-sm');
+      }
     }
 
     function saveCheck(id) {
